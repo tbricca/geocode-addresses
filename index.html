@@ -15,7 +15,10 @@
 </head>
 
 <body>
-    <div id="formatted-address">
+    <div class="container">
+        <div id="formatted-address"></div>
+    </div>
+
 
     </div>
     <script>
@@ -40,8 +43,10 @@
                         <ul class = "list-group">
                             <li class="list-group-item">${formattedAddress}</li>
                         </ul>
-
                     `;
+
+                    // Address Components
+                    var addressComponents = response.data.results[0].addressComponents
 
                     /// Output to App
                     document.getElementById('formatted-address').innerHTML = formattedAddressOutput
