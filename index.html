@@ -17,6 +17,7 @@
 <body>
     <div class="container">
         <div id="formatted-address"></div>
+        <div id="address-components"></div>
     </div>
 
 
@@ -34,7 +35,7 @@
             })
                 .then(function (response) {
                     // Log Full Response 
-                    console.log(response)
+                    // console.log(response)
 
                     // Formatted Address
                     var formattedAddress = response.data.results[0].formatted_address
@@ -47,13 +48,20 @@
 
                     // Address Components
                     var addressComponents = response.data.results[0].addressComponents
-
-                    /// Output to App
-                    document.getElementById('formatted-address').innerHTML = formattedAddressOutput
-                })
-                .catch(function (error) {
-                    console.log(error);
-                })
+                    var addressComponentsOutput = ' <ul class = "list-group">';
+                    for (var = 0; i < addressComponents.length; i++){
+                addressComponentsOutput += `
+                            <li class = "list-group-item"><strong> ${addressComponents[i].types[0]}
+                            </strong>: ${addressComponents[i].long_name}</li> 
+                        `;
+            }
+            addressComponentsOutput += '</ul>'
+            /// Output to App
+            document.getElementById('formatted-address').innerHTML = formattedAddressOutput
+        })
+                .catch (function (error) {
+            console.log(error);
+        })
 
         }
     </script>
