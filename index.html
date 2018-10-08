@@ -47,22 +47,22 @@
                     `;
 
                     // Address Components
-                    var addressComponents = response.data.results[0].addressComponents
-                    var addressComponentsOutput = ' <ul class = "list-group">';
-                    for (var = 0; i < addressComponents.length; i++){
-                addressComponentsOutput += `
+                    var addressComponents = response.data.results[0].address_components;
+                    var addressComponentsOutput = '<ul class = "list-group">';
+                    for (var i = 0; i < addressComponents.length; i++) {
+                        addressComponentsOutput += `
                             <li class = "list-group-item"><strong> ${addressComponents[i].types[0]}
                             </strong>: ${addressComponents[i].long_name}</li> 
                         `;
-            }
-            addressComponentsOutput += '</ul>'
-            /// Output to App
-            document.getElementById('formatted-address').innerHTML = formattedAddressOutput
-        })
-                .catch (function (error) {
-            console.log(error);
-        })
-
+                    }
+                    addressComponentsOutput += '</ul>'
+                    /// Output to App
+                    document.getElementById('formatted-address').innerHTML = formattedAddressOutput;
+                    document.getElementById('address-components').innerHTML = addressComponentsOutput;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         }
     </script>
 
