@@ -16,8 +16,9 @@
 
 <body>
     <div class="container">
-        <div id="formatted-address"></div>
-        <div id="address-components"></div>
+        <div class="card-block" id="formatted-address"></div>
+        <div class="card-block" id="address-components"></div>
+        <div class="card-block" id="geometry"></div>
     </div>
 
 
@@ -56,6 +57,18 @@
                         `;
                     }
                     addressComponentsOutput += '</ul>'
+
+                    // Geometry
+                    // Formatted Address
+                    var lat = response.data.results[0].geometry;
+                    // using backticks which allows to create a template string with multiple lines
+                    var formattedAddressOutput = `
+                        <ul class = "list-group">
+                            <li class="list-group-item">${formattedAddress}</li>
+                        </ul>
+                    `;
+
+
                     /// Output to App
                     document.getElementById('formatted-address').innerHTML = formattedAddressOutput;
                     document.getElementById('address-components').innerHTML = addressComponentsOutput;
